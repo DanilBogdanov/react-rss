@@ -1,0 +1,7 @@
+.character-card {
+  width: 300px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: rgba(19, 19, 19, 0.322);
+  box-shadow: 0 0 4px 4px rgba(19, 19, 19, 0.288);
+}
