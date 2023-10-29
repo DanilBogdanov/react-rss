@@ -1,0 +1,7 @@
+.character-list__cards {
+  display: flex;
+  justify-content: space-around;
+  column-gap: 30px;
+  row-gap: 50px;
+  flex-wrap: wrap;
+}
