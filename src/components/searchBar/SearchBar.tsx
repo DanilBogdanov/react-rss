@@ -1,50 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { LSKEY_PREV_QUERY } from '../../types/constants';
 
 type SearchBarProps = {
   onChange: (query: string) => void;
 };
 
-type SearchBarState = {
-  query: string;
-  error: Error | null;
-};
+export default function SearchBar({ onChange }: SearchBarProps): JSX.Element {
+  const [query, setQuery] = useState<string>(
+    localStorage.getItem(LSKEY_PREV_QUERY) ?? ''
+  );
 
-export default class SearchBar extends React.Component<
-  SearchBarProps,
-  SearchBarState
-> {
-  state: SearchBarState = {
-    query: localStorage.getItem(LSKEY_PREV_QUERY) || '',
-    error: null,
-  };
-
-  onChange(event: React.ChangeEvent<HTMLInputElement>) {
+  function onChangeInput(event: React.ChangeEvent<HTMLInputElement>) {
     const value = event.target.value;
-    this.setState({ query: value });
+    setQuery(value);
   }
 
-  onSearchClick() {
-    const query = this.state.query.trim();
-    localStorage.setItem(LSKEY_PREV_QUERY, query);
-    this.props.onChange(query);
+  function onSearchClick() {
+    const q = query.trim();
+    localStorage.setItem(LSKEY_PREV_QUERY, q);
+    onChange(q);
   }
 
-  render() {
-    if (this.state.error) throw this.state.error;
-    return (
-      <div>
-        <input
-          value={this.state.query}
-          onChange={(event) => this.onChange(event)}
-        ></input>
-        <button type='button' onClick={() => this.onSearchClick()}>
-          Search
-        </button>
-        <button onClick={() => this.setState({ error: new Error() })}>
-          Try Error
-        </button>
-      </div>
-    );
-  }
+  return (
+    <div>
+      <input
+        value={query}
+        onChange={(event) => onChangeInput(event)}
+        placeholder='type here...'
+      ></input>
+      <button type='button' onClick={() => onSearchClick()}>
+        Search
+      </button>
+    </div>
+  );
 }
