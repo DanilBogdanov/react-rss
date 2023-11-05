@@ -1,3 +1,8 @@
+.character-list {
+  display: flex;
+  flex-direction: column;
+}
+
 .character-list__cards {
   display: flex;
   justify-content: space-around;

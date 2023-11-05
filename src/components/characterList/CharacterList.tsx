@@ -6,6 +6,7 @@ import './characterList.css';
 import { useSearchParams } from 'react-router-dom';
 import { LSKEY_PREV_QUERY, PER_PAGE_DEFAULT } from '../../types/constants';
 import { getPageLimit } from '../../utils/apiUtils';
+import Pagination from '../pagination/Pagination';
 
 export default function CharacterList(): JSX.Element {
   const [searchParams] = useSearchParams();
@@ -44,21 +45,33 @@ export default function CharacterList(): JSX.Element {
 
   return (
     <div className='character-list'>
-      <div className='character-list__cards'>
-        {isLoading ? (
-          <div>
-            <h3>Loading</h3>
-            <br />
-            <img src='/spinner.svg' alt='spinner' height={200} />
+      {isLoading ? (
+        <div>
+          <h3>Loading</h3>
+          <br />
+          <img src='/spinner.svg' alt='spinner' height={200} />
+        </div>
+      ) : charactersResponse?.results ? (
+        <>
+          <Pagination
+            limit={limit}
+            count={charactersResponse.info.count}
+            currentPage={page}
+          />
+          <div className='character-list__cards'>
+            {charactersResponse.results.map((char: Character) => (
+              <CharacterCard key={char.id} character={char} />
+            ))}
           </div>
-        ) : charactersResponse?.results ? (
-          charactersResponse.results.map((char: Character) => (
-            <CharacterCard key={char.id} character={char} />
-          ))
-        ) : (
-          <h3>No Results</h3>
-        )}
-      </div>
+          <Pagination
+            limit={limit}
+            count={charactersResponse.info.count}
+            currentPage={page}
+          />
+        </>
+      ) : (
+        <h3>No Results</h3>
+      )}
     </div>
   );
 }
