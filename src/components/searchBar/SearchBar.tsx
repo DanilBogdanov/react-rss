@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import { LSKEY_PREV_QUERY } from '../../types/constants';
+import { useNavigate } from 'react-router-dom';
 
-type SearchBarProps = {
-  onChange: (query: string) => void;
-};
-
-export default function SearchBar({ onChange }: SearchBarProps): JSX.Element {
+export default function SearchBar(): JSX.Element {
+  const navigate = useNavigate();
   const [query, setQuery] = useState<string>(
     localStorage.getItem(LSKEY_PREV_QUERY) ?? ''
   );
@@ -18,7 +16,7 @@ export default function SearchBar({ onChange }: SearchBarProps): JSX.Element {
   function onSearchClick() {
     const q = query.trim();
     localStorage.setItem(LSKEY_PREV_QUERY, q);
-    onChange(q);
+    navigate(`/?query=${q}`);
   }
 
   return (
