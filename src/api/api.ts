@@ -1,7 +1,14 @@
-import { CharacterRequest, CharacterResponse } from '../types/api';
+import { Character, CharacterRequest, CharacterResponse } from '../types/api';
 
 class Api {
   private readonly host = 'https://rickandmortyapi.com/api';
+
+  public async getCharacter(id: number): Promise<Character> {
+    const url = `${this.host}/character/${id}`;
+    const resp: Response = await fetch(url);
+    const res: Character = await resp.json();
+    return res;
+  }
 
   public async getCharacters(
     request: CharacterRequest
