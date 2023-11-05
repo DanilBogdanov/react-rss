@@ -105,6 +105,7 @@ export default function Pagination({
   function onChangePerPage(e: React.ChangeEvent<HTMLSelectElement>) {
     const limitUrl = new URL(url);
     limitUrl.searchParams.set('limit', e.target.value);
+    limitUrl.searchParams.delete('page');
     navigate(`${limitUrl.pathname}${limitUrl.search}`);
   }
 
