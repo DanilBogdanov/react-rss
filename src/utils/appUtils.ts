@@ -8,3 +8,11 @@ export function getPageLimit(limit: number) {
   }
   return PageLimit.l20;
 }
+
+export function scrollToTop() {
+  window.scroll({
+    top: 0,
+    left: 0,
+    behavior: 'smooth',
+  });
+}

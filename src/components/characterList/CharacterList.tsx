@@ -4,7 +4,7 @@ import { useAppContext } from '@/context/AppContext';
 import CharacterCard from '@/components/characterCard/CharacterCard';
 import Pagination from '@/components/pagination/Pagination';
 import Loader from '@/components/loader/Loader';
-import { getPageLimit } from '@/utils/apiUtils';
+import { getPageLimit } from '@/utils/appUtils';
 import { PER_PAGE_DEFAULT } from '@/types/constants';
 import { Character } from '@/types/api';
 import { api } from '@/api/api';
@@ -41,7 +41,7 @@ export default function CharacterList(): JSX.Element {
 
   return (
     <div className='character-list'>
-      {isLoading ?? <Loader />}
+      {isLoading && <Loader />}
       {!isLoading && characters?.results && (
         <>
           <Pagination
