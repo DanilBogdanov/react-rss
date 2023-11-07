@@ -41,9 +41,8 @@ export default function CharacterList(): JSX.Element {
 
   return (
     <div className='character-list'>
-      {isLoading ? (
-        <Loader />
-      ) : characters?.results ? (
+      {isLoading ?? <Loader />}
+      {!isLoading && characters?.results && (
         <>
           <Pagination
             limit={limit}
@@ -61,9 +60,8 @@ export default function CharacterList(): JSX.Element {
             currentPage={page}
           />
         </>
-      ) : (
-        <h3>No Results</h3>
       )}
+      {!isLoading && !characters?.results && <h3>No Results</h3>}
     </div>
   );
 }
