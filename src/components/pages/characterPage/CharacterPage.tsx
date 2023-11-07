@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { Character } from '@/types/api';
 import { api } from '@/api/api';
 import './characterPage.css';
+import Loader from '@/components/loader/Loader';
 
 type Params = {
   id?: string;
@@ -39,13 +40,8 @@ export default function CharacterPage(): JSX.Element {
       <button className='character-page__close' type='button' onClick={onClose}>
         Close
       </button>
-      {isLoading ? (
-        <div>
-          <h3>Loading</h3>
-          <br />
-          <img src='/spinner.svg' alt='spinner' height={200} />
-        </div>
-      ) : character && character.name ? (
+      {isLoading && <Loader />}
+      {!isLoading && character?.name && (
         <>
           <h3>{character.name}</h3>
           <img src={character.image}></img>
@@ -53,9 +49,8 @@ export default function CharacterPage(): JSX.Element {
           <p>Species: {character.species}</p>
           <p>Status: {character.status}</p>
         </>
-      ) : (
-        <h3>No Character</h3>
       )}
+      {!isLoading && character?.name && <h3>No Character</h3>}
     </div>
   );
 }
