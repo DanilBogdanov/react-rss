@@ -1,32 +1,28 @@
-import React, { useEffect, useState } from 'react';
-import CharacterCard from '../characterCard/CharacterCard';
-import { Character, CharacterResponse } from '../../types/api';
-import { api } from '../../api/api';
-import './characterList.css';
+import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { LSKEY_PREV_QUERY, PER_PAGE_DEFAULT } from '../../types/constants';
-import { getPageLimit } from '../../utils/apiUtils';
-import Pagination from '../pagination/Pagination';
+import { useAppContext } from '@/context/AppContext';
+import CharacterCard from '@/components/characterCard/CharacterCard';
+import Pagination from '@/components/pagination/Pagination';
+import Loader from '@/components/loader/Loader';
+import { getPageLimit } from '@/utils/apiUtils';
+import { PER_PAGE_DEFAULT } from '@/types/constants';
+import { Character } from '@/types/api';
+import { api } from '@/api/api';
+import './characterList.css';
 
 export default function CharacterList(): JSX.Element {
   const [searchParams] = useSearchParams();
-  const [charactersResponse, setCharactersResponse] =
-    useState<CharacterResponse | null>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [limit, setLimit] = useState<number>(PER_PAGE_DEFAULT);
   const [page, setPage] = useState<number>(1);
-  const [query, setQuery] = useState<string>(
-    localStorage.getItem(LSKEY_PREV_QUERY) ?? ''
-  );
+  const { query, characters, setCharacters, isLoading, setIsLoading } =
+    useAppContext();
 
   useEffect(() => {
     const limitParam = +(searchParams.get('limit') ?? PER_PAGE_DEFAULT);
     limit === limitParam || setLimit(limitParam);
     const pageParam = +(searchParams.get('page') ?? 1);
     page === pageParam || setPage(pageParam);
-    const queryParam = searchParams.get('query') ?? '';
-    query === queryParam || setQuery(queryParam);
-  }, [limit, page, query, searchParams]);
+  }, [limit, page, searchParams]);
 
   useEffect(() => {
     async function update(): Promise<void> {
@@ -34,38 +30,34 @@ export default function CharacterList(): JSX.Element {
       const response = await api.getCharacters({
         name: query,
         limit: getPageLimit(limit),
-        page: page,
+        page,
       });
-      setCharactersResponse(response);
+      setCharacters(response);
       setIsLoading(false);
     }
 
     update();
-  }, [limit, page, query]);
+  }, [limit, page, query, setCharacters, setIsLoading]);
 
   return (
     <div className='character-list'>
       {isLoading ? (
-        <div>
-          <h3>Loading</h3>
-          <br />
-          <img src='/spinner.svg' alt='spinner' height={200} />
-        </div>
-      ) : charactersResponse?.results ? (
+        <Loader />
+      ) : characters?.results ? (
         <>
           <Pagination
             limit={limit}
-            count={charactersResponse.info.count}
+            count={characters.info.count}
             currentPage={page}
           />
           <div className='character-list__cards'>
-            {charactersResponse.results.map((char: Character) => (
+            {characters.results.map((char: Character) => (
               <CharacterCard key={char.id} character={char} />
             ))}
           </div>
           <Pagination
             limit={limit}
-            count={charactersResponse.info.count}
+            count={characters.info.count}
             currentPage={page}
           />
         </>

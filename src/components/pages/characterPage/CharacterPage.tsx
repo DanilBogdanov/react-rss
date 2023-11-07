@@ -1,7 +1,7 @@
-import { useNavigate, useParams } from 'react-router-dom';
-import { api } from '../../api/api';
 import { useState, useEffect } from 'react';
-import { Character } from '../../types/api';
+import { useNavigate, useParams } from 'react-router-dom';
+import { Character } from '@/types/api';
+import { api } from '@/api/api';
 import './characterPage.css';
 
 type Params = {
@@ -30,7 +30,7 @@ export default function CharacterPage(): JSX.Element {
 
   function onClose() {
     const url = new URL(location.href);
-    url.pathname = '';
+    url.pathname = 'search';
     navigate(`${url.pathname}${url.search}`);
   }
 

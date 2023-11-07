@@ -1,7 +1,7 @@
-import ErrorBoundary from './components/errorBoundary/errorBoundary';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Layout from './components/layout/Layout';
-import CharacterPage from './components/characterPage/CharacterPage';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import ErrorBoundary from '@/components/errorBoundary/errorBoundary';
+import CharacterPage from '@/components/pages/characterPage/CharacterPage';
+import SearchPage from '@/components/pages/searchPage/searchPage';
 import './App.css';
 
 export default function App(): JSX.Element {
@@ -9,7 +9,8 @@ export default function App(): JSX.Element {
     <ErrorBoundary>
       <BrowserRouter>
         <Routes>
-          <Route path='*' element={<Layout />}>
+          <Route path='/' element={<Navigate to='/search' />} />
+          <Route path='/search' element={<SearchPage />}>
             <Route path='character/:id' element={<CharacterPage />} />
           </Route>
         </Routes>

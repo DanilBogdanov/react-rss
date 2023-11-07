@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { Character } from '../../types/api';
+import { Character } from '@/types/api';
 import './characterCard.css';
 
 type CharacterListProps = {
@@ -13,7 +13,7 @@ export default function CharacterCard({
 
   function showCharacter(id: number) {
     const url = new URL(location.href);
-    url.pathname = `/character/${id}`;
+    url.pathname = `search/character/${id}`;
     navigate(`${url.pathname}${url.search}`);
     window.scroll({
       top: 0,
