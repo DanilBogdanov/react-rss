@@ -1,6 +1,7 @@
 import { ReactElement } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import PageLink from './PageLink';
 import './pagination.css';
+import LimitSelect from './LimitSelect';
 
 type PaginationProps = {
   count: number;
@@ -13,34 +14,8 @@ export default function Pagination({
   limit,
   currentPage,
 }: PaginationProps): ReactElement {
-  const navigate = useNavigate();
   const url = new URL(location.href);
   const pages = Math.ceil(count / limit);
-
-  const getLink = (
-    page: number,
-    title: string | number,
-    isActive: boolean = false
-  ) => {
-    const pageUrl = new URL(url);
-    if (page === 1) {
-      pageUrl.searchParams.delete('page');
-    } else {
-      pageUrl.searchParams.set('page', page.toString());
-    }
-    return (
-      <li key={title}>
-        <Link
-          className={`pagination__link${
-            isActive ? ' pagination__link_active' : ''
-          }`}
-          to={`${pageUrl.pathname}${pageUrl.search}`}
-        >
-          {title}
-        </Link>
-      </li>
-    );
-  };
 
   const getSpan = (text: string, key: string) => {
     return (
@@ -62,7 +37,9 @@ export default function Pagination({
       let startExtra = 0;
       let endExtra = 0;
       if (currentPage > 4) {
-        prevLinks.push(getLink(1, 1));
+        prevLinks.push(
+          <PageLink page={1} title={1} url={url} isActive={false} />
+        );
         prevLinks.push(getSpan('...', 'dotedPrev'));
         startIdx = currentPage - 1;
       } else {
@@ -72,7 +49,9 @@ export default function Pagination({
       if (pages - currentPage > 3) {
         endIdx = currentPage + 1;
         restLinks.push(getSpan('...', 'dotedNext'));
-        restLinks.push(getLink(pages, pages));
+        restLinks.push(
+          <PageLink page={pages} title={pages} url={url} isActive={false} />
+        );
       } else {
         startExtra = 3 - (pages - currentPage);
       }
@@ -81,46 +60,30 @@ export default function Pagination({
     }
     for (let i = startIdx; i <= endIdx; i += 1) {
       const isActive = i === currentPage;
-      links.push(getLink(i, i, isActive));
+      links.push(<PageLink page={i} title={i} url={url} isActive={isActive} />);
     }
 
     const prevLink =
-      currentPage > 1 ? getLink(currentPage - 1, '<') : getSpan('<', 'prev');
+      currentPage > 1 ? (
+        <PageLink page={currentPage - 1} title='<' url={url} isActive={false} />
+      ) : (
+        getSpan('<', 'prev')
+      );
     const nextLink =
-      currentPage < pages
-        ? getLink(currentPage + 1, '>')
-        : getSpan('>', 'next');
+      currentPage < pages ? (
+        <PageLink page={currentPage + 1} title='>' url={url} isActive={false} />
+      ) : (
+        getSpan('>', 'next')
+      );
     return [prevLink, ...prevLinks, ...links, ...restLinks, nextLink];
   };
-
-  function getOptions() {
-    const values = [20, 40, 60];
-    return values.map((value) => (
-      <option key={value} value={value}>
-        {value}
-      </option>
-    ));
-  }
-
-  function onChangePerPage(e: React.ChangeEvent<HTMLSelectElement>) {
-    const limitUrl = new URL(url);
-    limitUrl.searchParams.set('limit', e.target.value);
-    limitUrl.searchParams.delete('page');
-    navigate(`${limitUrl.pathname}${limitUrl.search}`);
-  }
 
   return (
     <div className='pagination'>
       <nav>
         <ul className='pagination__links'>{getLinks()}</ul>
       </nav>
-      <select
-        className='pagination__select'
-        onChange={onChangePerPage}
-        value={limit}
-      >
-        {getOptions()}
-      </select>
+      <LimitSelect url={url} currentLimit={limit} />
     </div>
   );
 }
