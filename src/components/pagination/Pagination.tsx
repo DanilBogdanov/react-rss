@@ -38,7 +38,7 @@ export default function Pagination({
       let endExtra = 0;
       if (currentPage > 4) {
         prevLinks.push(
-          <PageLink page={1} title={1} url={url} isActive={false} />
+          <PageLink key={1} page={1} title={1} url={url} isActive={false} />
         );
         prevLinks.push(getSpan('...', 'dotedPrev'));
         startIdx = currentPage - 1;
@@ -50,7 +50,13 @@ export default function Pagination({
         endIdx = currentPage + 1;
         restLinks.push(getSpan('...', 'dotedNext'));
         restLinks.push(
-          <PageLink page={pages} title={pages} url={url} isActive={false} />
+          <PageLink
+            key={pages}
+            page={pages}
+            title={pages}
+            url={url}
+            isActive={false}
+          />
         );
       } else {
         startExtra = 3 - (pages - currentPage);
@@ -60,18 +66,32 @@ export default function Pagination({
     }
     for (let i = startIdx; i <= endIdx; i += 1) {
       const isActive = i === currentPage;
-      links.push(<PageLink page={i} title={i} url={url} isActive={isActive} />);
+      links.push(
+        <PageLink key={i} page={i} title={i} url={url} isActive={isActive} />
+      );
     }
 
     const prevLink =
       currentPage > 1 ? (
-        <PageLink page={currentPage - 1} title='<' url={url} isActive={false} />
+        <PageLink
+          key='<'
+          page={currentPage - 1}
+          title='<'
+          url={url}
+          isActive={false}
+        />
       ) : (
         getSpan('<', 'prev')
       );
     const nextLink =
       currentPage < pages ? (
-        <PageLink page={currentPage + 1} title='>' url={url} isActive={false} />
+        <PageLink
+          key='>'
+          page={currentPage + 1}
+          title='>'
+          url={url}
+          isActive={false}
+        />
       ) : (
         getSpan('>', 'next')
       );

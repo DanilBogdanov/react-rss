@@ -50,7 +50,7 @@ export default function CharacterPage(): JSX.Element {
           <p>Status: {character.status}</p>
         </>
       )}
-      {!isLoading && character?.name && <h3>No Character</h3>}
+      {!isLoading && !character?.name && <h3>No Character</h3>}
     </div>
   );
 }
