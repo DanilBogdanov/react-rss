@@ -1,0 +1,15 @@
+.character-card {
+  display: flex;
+  flex-direction: column;
+  width: 150px;
+  padding: 5px;
+  border-radius: 10px;
+  background-color: rgba(19, 19, 19, 0.322);
+  box-shadow: 0 0 4px 4px rgba(19, 19, 19, 0.288);
+  cursor: pointer;
+}
+
+.character-card__title {
+  height: 50px;
+  margin: 0;
+}

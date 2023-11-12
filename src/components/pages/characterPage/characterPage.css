@@ -1,0 +1,9 @@
+.character-page {
+  min-width: 350px;
+  background-color: rgba(0, 0, 0, 0.219);
+}
+
+.character-page__close {
+  margin: 2rem;
+  background-color: red;
+}
