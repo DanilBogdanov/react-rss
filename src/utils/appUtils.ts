@@ -10,7 +10,7 @@ export function getPageLimit(limit: number) {
 }
 
 export function scrollToTop() {
-  window.scroll({
+  globalThis.scroll({
     top: 0,
     left: 0,
     behavior: 'smooth',
