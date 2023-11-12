@@ -29,6 +29,7 @@ export default function LimitSelect({ url, currentLimit }: LimitSelectProps) {
       className='pagination__select'
       onChange={onChangePerPage}
       value={currentLimit}
+      data-testid='limit-select'
     >
       {getOptions()}
     </select>
