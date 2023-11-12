@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { Character, CharacterRequest, CharacterResponse } from '../types/api';
 
 class Api {
@@ -5,9 +6,8 @@ class Api {
 
   public async getCharacter(id: number): Promise<Character> {
     const url = `${this.host}/character/${id}`;
-    const resp: Response = await fetch(url);
-    const res: Character = await resp.json();
-    return res;
+    const { data } = await axios.get<Character>(url);
+    return data;
   }
 
   public async getCharacters(
@@ -42,9 +42,9 @@ class Api {
     page: number
   ): Promise<CharacterResponse> {
     const url = `${this.host}/character?name=${name}&page=${page}`;
-    const resp: Response = await fetch(url);
-    const res: CharacterResponse = await resp.json();
-    return res;
+    const { data } = await axios.get<CharacterResponse>(url);
+    if (!data.results) throw Error('Not Found');
+    return data;
   }
 }
 
