@@ -26,9 +26,10 @@ export default function CharacterCard({
         e.stopPropagation();
         showCharacter(character.id);
       }}
+      data-testid='character-card'
     >
       <h4 className='character-card__title'>{character.name}</h4>
-      <img src={character.image} />
+      <img src={character.image} alt={`${character.name}-img`} />
     </div>
   );
 }
