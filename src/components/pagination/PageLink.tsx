@@ -26,7 +26,7 @@ export default function PageLink({
         className={`pagination__link${
           isActive ? ' pagination__link_active' : ''
         }`}
-        to={`${pageUrl.pathname}${pageUrl.search}`}
+        to={`/search${pageUrl.search}`}
       >
         {title}
       </Link>
