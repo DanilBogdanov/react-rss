@@ -13,7 +13,7 @@ export default function CharacterPage(): JSX.Element {
   const params = useParams<Params>();
   const id = params.id;
   const [character, setCharacter] = useState<Character | null>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -36,7 +36,7 @@ export default function CharacterPage(): JSX.Element {
   }
 
   return (
-    <div className='character-page'>
+    <div className='character-page' data-testid='character-page'>
       <button className='character-page__close' type='button' onClick={onClose}>
         Close
       </button>
