@@ -5,5 +5,9 @@ type LayoutProps = {
 };
 
 export default function Layout({ children }: LayoutProps): JSX.Element {
-  return <div className='layout'>{children}</div>;
+  return (
+    <div className='layout' data-testid='layout'>
+      {children}
+    </div>
+  );
 }
