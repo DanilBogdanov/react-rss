@@ -22,7 +22,7 @@ export interface CharacterRequest {
 }
 
 export enum PageLimit {
-  l20 = 1,
-  l40 = 2,
-  l60 = 3,
+  L20 = 1,
+  L40 = 2,
+  L60 = 3,
 }

@@ -2,12 +2,12 @@ import { PageLimit } from '../types/api';
 
 export function getPageLimit(limit: number) {
   if (limit === 60) {
-    return PageLimit.l60;
+    return PageLimit.L60;
   } else if (limit === 40) {
-    return PageLimit.l40;
+    return PageLimit.L40;
   }
 
-  return PageLimit.l20;
+  return PageLimit.L20;
 }
 
 export function scrollToTop() {

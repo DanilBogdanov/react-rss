@@ -14,7 +14,7 @@ describe('Api test', () => {
   const characterRequest = {
     name: '',
     page: 1,
-    limit: PageLimit.l40,
+    limit: PageLimit.L40,
   };
 
   test('getCharacter test', async () => {
