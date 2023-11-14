@@ -10,6 +10,7 @@ export default function LimitSelect({ url, currentLimit }: LimitSelectProps) {
 
   function getOptions() {
     const values = [20, 40, 60];
+
     return values.map((value) => (
       <option key={value} value={value}>
         {value}

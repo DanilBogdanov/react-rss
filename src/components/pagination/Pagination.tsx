@@ -33,9 +33,11 @@ export default function Pagination({
     const links = [];
     let startIdx = 1;
     let endIdx = pages;
+
     if (pages > 7) {
       let startExtra = 0;
       let endExtra = 0;
+
       if (currentPage > 4) {
         prevLinks.push(
           <PageLink key={1} page={1} title={1} url={url} isActive={false} />
@@ -61,9 +63,11 @@ export default function Pagination({
       } else {
         startExtra = 3 - (pages - currentPage);
       }
+
       startIdx -= startExtra;
       endIdx += endExtra;
     }
+
     for (let i = startIdx; i <= endIdx; i += 1) {
       const isActive = i === currentPage;
       links.push(
@@ -83,6 +87,7 @@ export default function Pagination({
       ) : (
         getSpan('<', 'prev')
       );
+
     const nextLink =
       currentPage < pages ? (
         <PageLink
@@ -95,6 +100,7 @@ export default function Pagination({
       ) : (
         getSpan('>', 'next')
       );
+
     return [prevLink, ...prevLinks, ...links, ...restLinks, nextLink];
   };
 

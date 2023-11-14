@@ -36,6 +36,7 @@ describe('CharacterList test', () => {
     });
 
     const cards = await screen.findAllByTestId('character-card');
+
     expect(cards).toHaveLength(mockCharacterResponse.results.length);
   });
 

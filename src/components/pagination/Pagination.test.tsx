@@ -41,10 +41,10 @@ describe('Pagination test', () => {
         </MemoryRouter>
       );
     });
-
     const linkToPrevPage = await screen.findAllByText(/</i);
     await userEvent.click(linkToPrevPage[0]);
     const currentPage = await screen.findByTestId('current-page');
+
     expect(currentPage.textContent).toEqual(`${startPage - 1}`);
   });
 });

@@ -6,6 +6,7 @@ export function getPageLimit(limit: number) {
   } else if (limit === 40) {
     return PageLimit.l40;
   }
+
   return PageLimit.l20;
 }
 

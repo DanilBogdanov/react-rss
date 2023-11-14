@@ -6,6 +6,7 @@ import { MemoryRouter } from 'react-router-dom';
 describe('NotFoundPage test', () => {
   test('Title is displayed', () => {
     render(<NotFoundPage />);
+
     expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent(
       'Page not found'
     );

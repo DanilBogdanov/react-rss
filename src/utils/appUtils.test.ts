@@ -21,6 +21,7 @@ describe('AppUtils tests', () => {
 
   test('scrollToTop called scroll', () => {
     scrollToTop();
+
     expect(typeof scrollToTop).toEqual('function');
     expect(global.scroll).toHaveBeenCalled();
   });

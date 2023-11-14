@@ -25,6 +25,7 @@ describe('SearchBar test', () => {
 
   test('Component retrieves the value from the local storage', () => {
     const searchInput = screen.getByRole('textbox');
+
     expect(searchInput).toHaveAttribute('value', testLSValuePrev);
   });
 
@@ -35,6 +36,7 @@ describe('SearchBar test', () => {
     const searchButton = screen.getByRole('button');
     await userEvent.click(searchButton);
     const currentLSValue = localStorage.getItem(LSKEY_PREV_QUERY);
+
     expect(currentLSValue).toEqual(testLSValueNew);
   });
 });

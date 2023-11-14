@@ -38,6 +38,7 @@ describe('CharacterCard routing test', () => {
     const card = await screen.findByTestId('character-card');
     userEvent.click(card);
     const characterPage = await screen.findByTestId('character-page');
+
     expect(characterPage).toBeInTheDocument();
   });
 
@@ -67,6 +68,7 @@ describe('CharacterCard renders the relevant card data', () => {
 
   test('CharacterCard show character img', () => {
     const img = screen.getByRole('img');
+
     expect(img).toHaveAttribute('src', mockCharacterRick.image);
     expect(img).toHaveAttribute('alt', `${mockCharacterRick.name}-img`);
   });

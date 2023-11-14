@@ -14,6 +14,7 @@ export default function PageLink({
   isActive = false,
 }: PageLinkProps): JSX.Element {
   const pageUrl = new URL(url);
+
   if (page === 1) {
     pageUrl.searchParams.delete('page');
   } else {

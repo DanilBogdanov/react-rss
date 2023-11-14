@@ -7,6 +7,7 @@ class Api {
   public async getCharacter(id: number): Promise<Character> {
     const url = `${this.host}/character/${id}`;
     const { data } = await axios.get<Character>(url);
+
     return data;
   }
 
@@ -44,6 +45,7 @@ class Api {
     const url = `${this.host}/character?name=${name}&page=${page}`;
     const { data } = await axios.get<CharacterResponse>(url);
     if (!data.results) throw Error('Not Found');
+
     return data;
   }
 }

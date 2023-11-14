@@ -25,6 +25,7 @@ describe('CharacterCard routing test', () => {
       </MemoryRouter>
     );
     const loader = screen.getByTestId('loader');
+
     expect(loader).toBeInTheDocument();
   });
 
@@ -38,6 +39,7 @@ describe('CharacterCard routing test', () => {
         </MemoryRouter>
       );
     });
+
     expect(screen.getByRole('heading')).toBeInTheDocument();
     expect(screen.getByRole('img')).toBeInTheDocument();
     expect(screen.getByText(/Gender:/i)).toBeInTheDocument();
@@ -56,8 +58,8 @@ describe('CharacterCard routing test', () => {
         </MemoryRouter>
       );
     });
-
     await userEvent.click(screen.getByRole('button'));
+
     expect(screen.queryByTestId('character-page')).not.toBeInTheDocument();
   });
 });

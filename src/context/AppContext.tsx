@@ -27,6 +27,7 @@ function useAppContext(): AppContextType {
       `useAppContext must be used within a CharactersContextProvider`
     );
   }
+
   return context;
 }
 

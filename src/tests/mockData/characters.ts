@@ -25,9 +25,7 @@ export const mockCharacterResponse: CharacterResponse = {
       status: 'Alive',
       species: 'Human',
       gender: 'Male',
-
       image: 'https://rickandmortyapi.com/api/character/avatar/1.jpeg',
-
       url: 'https://rickandmortyapi.com/api/character/1',
     },
     {
@@ -36,9 +34,7 @@ export const mockCharacterResponse: CharacterResponse = {
       status: 'Alive',
       species: 'Human',
       gender: 'Male',
-
       image: 'https://rickandmortyapi.com/api/character/avatar/2.jpeg',
-
       url: 'https://rickandmortyapi.com/api/character/2',
     },
     {
@@ -47,9 +43,7 @@ export const mockCharacterResponse: CharacterResponse = {
       status: 'Alive',
       species: 'Human',
       gender: 'Female',
-
       image: 'https://rickandmortyapi.com/api/character/avatar/3.jpeg',
-
       url: 'https://rickandmortyapi.com/api/character/3',
     },
     {
@@ -58,9 +52,7 @@ export const mockCharacterResponse: CharacterResponse = {
       status: 'Alive',
       species: 'Human',
       gender: 'Female',
-
       image: 'https://rickandmortyapi.com/api/character/avatar/4.jpeg',
-
       url: 'https://rickandmortyapi.com/api/character/4',
     },
     {
@@ -69,9 +61,7 @@ export const mockCharacterResponse: CharacterResponse = {
       status: 'Alive',
       species: 'Human',
       gender: 'Male',
-
       image: 'https://rickandmortyapi.com/api/character/avatar/5.jpeg',
-
       url: 'https://rickandmortyapi.com/api/character/5',
     },
     {
@@ -80,7 +70,6 @@ export const mockCharacterResponse: CharacterResponse = {
       status: 'Alive',
       species: 'Alien',
       gender: 'Female',
-
       image: 'https://rickandmortyapi.com/api/character/avatar/6.jpeg',
       url: 'https://rickandmortyapi.com/api/character/6',
     },
@@ -90,9 +79,7 @@ export const mockCharacterResponse: CharacterResponse = {
       status: 'unknown',
       species: 'Human',
       gender: 'Male',
-
       image: 'https://rickandmortyapi.com/api/character/avatar/7.jpeg',
-
       url: 'https://rickandmortyapi.com/api/character/7',
     },
     {
@@ -101,7 +88,6 @@ export const mockCharacterResponse: CharacterResponse = {
       status: 'Dead',
       species: 'Human',
       gender: 'Male',
-
       image: 'https://rickandmortyapi.com/api/character/avatar/8.jpeg',
       url: 'https://rickandmortyapi.com/api/character/8',
     },
@@ -111,7 +97,6 @@ export const mockCharacterResponse: CharacterResponse = {
       status: 'Dead',
       species: 'Human',
       gender: 'Male',
-
       image: 'https://rickandmortyapi.com/api/character/avatar/9.jpeg',
       url: 'https://rickandmortyapi.com/api/character/9',
     },
@@ -121,7 +106,6 @@ export const mockCharacterResponse: CharacterResponse = {
       status: 'Dead',
       species: 'Human',
       gender: 'Male',
-
       image: 'https://rickandmortyapi.com/api/character/avatar/10.jpeg',
       url: 'https://rickandmortyapi.com/api/character/10',
     },
@@ -131,7 +115,6 @@ export const mockCharacterResponse: CharacterResponse = {
       status: 'Dead',
       species: 'Human',
       gender: 'Male',
-
       image: 'https://rickandmortyapi.com/api/character/avatar/11.jpeg',
       url: 'https://rickandmortyapi.com/api/character/11',
     },
@@ -141,7 +124,6 @@ export const mockCharacterResponse: CharacterResponse = {
       status: 'Dead',
       species: 'Human',
       gender: 'Male',
-
       image: 'https://rickandmortyapi.com/api/character/avatar/12.jpeg',
       url: 'https://rickandmortyapi.com/api/character/12',
     },
@@ -151,7 +133,6 @@ export const mockCharacterResponse: CharacterResponse = {
       status: 'unknown',
       species: 'Alien',
       gender: 'unknown',
-
       image: 'https://rickandmortyapi.com/api/character/avatar/13.jpeg',
       url: 'https://rickandmortyapi.com/api/character/13',
     },
@@ -161,7 +142,6 @@ export const mockCharacterResponse: CharacterResponse = {
       status: 'unknown',
       species: 'Alien',
       gender: 'Male',
-
       image: 'https://rickandmortyapi.com/api/character/avatar/14.jpeg',
       url: 'https://rickandmortyapi.com/api/character/14',
     },
@@ -171,7 +151,6 @@ export const mockCharacterResponse: CharacterResponse = {
       status: 'unknown',
       species: 'Alien',
       gender: 'Male',
-
       image: 'https://rickandmortyapi.com/api/character/avatar/15.jpeg',
       url: 'https://rickandmortyapi.com/api/character/15',
     },
@@ -181,7 +160,6 @@ export const mockCharacterResponse: CharacterResponse = {
       status: 'Dead',
       species: 'Alien',
       gender: 'Male',
-
       image: 'https://rickandmortyapi.com/api/character/avatar/16.jpeg',
       url: 'https://rickandmortyapi.com/api/character/16',
     },
@@ -191,7 +169,6 @@ export const mockCharacterResponse: CharacterResponse = {
       status: 'Alive',
       species: 'Human',
       gender: 'Female',
-
       image: 'https://rickandmortyapi.com/api/character/avatar/17.jpeg',
       url: 'https://rickandmortyapi.com/api/character/17',
     },
@@ -201,9 +178,7 @@ export const mockCharacterResponse: CharacterResponse = {
       status: 'Alive',
       species: 'Human',
       gender: 'Male',
-
       image: 'https://rickandmortyapi.com/api/character/avatar/18.jpeg',
-
       url: 'https://rickandmortyapi.com/api/character/18',
     },
     {
@@ -212,7 +187,6 @@ export const mockCharacterResponse: CharacterResponse = {
       status: 'unknown',
       species: 'Human',
       gender: 'Male',
-
       image: 'https://rickandmortyapi.com/api/character/avatar/19.jpeg',
       url: 'https://rickandmortyapi.com/api/character/19',
     },
@@ -222,7 +196,6 @@ export const mockCharacterResponse: CharacterResponse = {
       status: 'unknown',
       species: 'Human',
       gender: 'Male',
-
       image: 'https://rickandmortyapi.com/api/character/avatar/20.jpeg',
       url: 'https://rickandmortyapi.com/api/character/20',
     },
