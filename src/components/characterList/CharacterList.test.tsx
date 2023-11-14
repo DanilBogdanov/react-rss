@@ -1,10 +1,10 @@
+import { MemoryRouter } from 'react-router-dom';
+import { act } from 'react-dom/test-utils';
 import { render, screen } from '@testing-library/react';
 import { mockCharacterResponse } from '@/tests/mockData/characters';
-import { MemoryRouter } from 'react-router-dom';
+import { AppContextProvider } from '@/context/AppContext';
 import AppRouter from '@/router/AppRouter';
 import { api } from '@/api/api';
-import { AppContextProvider } from '@/context/AppContext';
-import { act } from 'react-dom/test-utils';
 import { scrollToTop } from '@/utils/appUtils';
 
 jest.mock('@/api/api');

@@ -1,8 +1,8 @@
-import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import { AppContextProvider } from '@/context/AppContext';
-import userEvent from '@testing-library/user-event';
 import { act } from 'react-dom/test-utils';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { AppContextProvider } from '@/context/AppContext';
 import { LSKEY_PREV_QUERY } from '@/types/constants';
 import SearchBar from './SearchBar';
 

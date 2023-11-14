@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
-import { scrollToTop } from '@/utils/appUtils';
 import { Character } from '@/types/api';
+import { scrollToTop } from '@/utils/appUtils';
 import './characterCard.css';
 
 type CharacterListProps = {

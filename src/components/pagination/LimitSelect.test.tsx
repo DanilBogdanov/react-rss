@@ -1,6 +1,6 @@
+import { MemoryRouter } from 'react-router-dom';
 import { render, screen } from '@testing-library/react';
 import LimitSelect from './LimitSelect';
-import { MemoryRouter } from 'react-router-dom';
 
 describe('LimitSelect test', () => {
   const testUrl = new URL('http://localhost');

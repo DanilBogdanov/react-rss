@@ -1,7 +1,7 @@
+import { MemoryRouter } from 'react-router-dom';
 import { act, render, screen } from '@testing-library/react';
 import NotFoundPage from './NotFoundPage';
 import AppRouter from '@/router/AppRouter';
-import { MemoryRouter } from 'react-router-dom';
 
 describe('NotFoundPage test', () => {
   test('Title is displayed', () => {

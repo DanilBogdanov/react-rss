@@ -1,16 +1,16 @@
+import { MemoryRouter } from 'react-router-dom';
 import { render, screen } from '@testing-library/react';
+import { act } from 'react-dom/test-utils';
+import userEvent from '@testing-library/user-event';
+import DisplayLocation from '@/tests/mockData/DisplayLocation';
+import AppRouter from '@/router/AppRouter';
+import { AppContextProvider } from '@/context/AppContext';
+import { api } from '@/api/api';
+import { scrollToTop } from '@/utils/appUtils';
 import {
   mockCharacterResponse,
   mockCharacterRick,
 } from '@/tests/mockData/characters';
-import { MemoryRouter } from 'react-router-dom';
-import AppRouter from '@/router/AppRouter';
-import { api } from '@/api/api';
-import { AppContextProvider } from '@/context/AppContext';
-import userEvent from '@testing-library/user-event';
-import { act } from 'react-dom/test-utils';
-import { scrollToTop } from '@/utils/appUtils';
-import DisplayLocation from '@/tests/mockData/DisplayLocation';
 
 jest.mock('@/api/api');
 jest.mock('@/utils/appUtils');

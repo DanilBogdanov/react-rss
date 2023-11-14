@@ -1,8 +1,8 @@
 import { Outlet, useNavigate } from 'react-router-dom';
-import { AppContextProvider } from '@/context/AppContext';
 import Layout from '@/components/layout/Layout';
 import SearchBar from '@/components/searchBar/SearchBar';
 import CharacterList from '@/components/characterList/CharacterList';
+import { AppContextProvider } from '@/context/AppContext';
 import './searchPage.css';
 
 export default function SearchPage(): JSX.Element {

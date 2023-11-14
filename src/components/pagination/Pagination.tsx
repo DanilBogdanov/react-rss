@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
+import LimitSelect from './LimitSelect';
 import PageLink from './PageLink';
 import './pagination.css';
-import LimitSelect from './LimitSelect';
 
 type PaginationProps = {
   count: number;

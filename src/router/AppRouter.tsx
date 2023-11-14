@@ -1,7 +1,7 @@
+import { Routes, Route, Navigate } from 'react-router-dom';
 import CharacterPage from '@/components/pages/characterPage/CharacterPage';
 import NotFoundPage from '@/components/pages/notFoundPage/NotFoundPage';
 import SearchPage from '@/components/pages/searchPage/searchPage';
-import { Routes, Route, Navigate } from 'react-router-dom';
 
 export default function AppRouter(): JSX.Element {
   return (

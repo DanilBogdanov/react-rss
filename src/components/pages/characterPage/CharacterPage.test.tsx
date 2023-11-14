@@ -1,11 +1,11 @@
-import { render, screen } from '@testing-library/react';
-import { mockCharacterRick } from '@/tests/mockData/characters';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
-import { api } from '@/api/api';
 import { act } from 'react-dom/test-utils';
-import CharacterPage from './CharacterPage';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import SearchPage from '../searchPage/searchPage';
+import SearchPage from '@/components/pages/searchPage/searchPage';
+import CharacterPage from './CharacterPage';
+import { api } from '@/api/api';
+import { mockCharacterRick } from '@/tests/mockData/characters';
 
 jest.mock('@/api/api');
 

@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import Loader from '@/components/loader/Loader';
 import { Character } from '@/types/api';
 import { api } from '@/api/api';
 import './characterPage.css';
-import Loader from '@/components/loader/Loader';
 
 type Params = {
   id?: string;

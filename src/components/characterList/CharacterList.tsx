@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { useAppContext } from '@/context/AppContext';
 import CharacterCard from '@/components/characterCard/CharacterCard';
 import Pagination from '@/components/pagination/Pagination';
 import Loader from '@/components/loader/Loader';
+import { useAppContext } from '@/context/AppContext';
 import { getPageLimit } from '@/utils/appUtils';
 import { PER_PAGE_DEFAULT } from '@/types/constants';
 import { Character } from '@/types/api';
