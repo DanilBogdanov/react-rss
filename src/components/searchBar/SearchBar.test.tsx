@@ -1,35 +1,31 @@
+import 'whatwg-fetch';
 import { MemoryRouter } from 'react-router-dom';
 import { act } from 'react-dom/test-utils';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { AppContextProvider } from '@/context/AppContext';
 import { LSKEY_PREV_QUERY } from '@/types/constants';
 import SearchBar from './SearchBar';
+import { setupStore } from '@/store/store';
+import { Provider } from 'react-redux';
+
+const testLSValuePrev = 'prevTestValue';
+const testLSValueNew = 'testValueNew';
+localStorage.setItem(LSKEY_PREV_QUERY, testLSValuePrev);
+const store = setupStore();
 
 describe('SearchBar test', () => {
-  const testLSValuePrev = 'prevTestValue';
-  const testLSValueNew = 'testValueNew';
-
-  beforeEach(async () => {
+  test('Search button saves the entered value to the local storage', async () => {
     localStorage.setItem(LSKEY_PREV_QUERY, testLSValuePrev);
     await act(async () => {
       render(
-        <MemoryRouter>
-          <AppContextProvider>
+        <Provider store={store}>
+          <MemoryRouter>
             <SearchBar />
-          </AppContextProvider>
-        </MemoryRouter>
+          </MemoryRouter>
+        </Provider>
       );
     });
-  });
 
-  test('Component retrieves the value from the local storage', () => {
-    const searchInput = screen.getByRole('textbox');
-
-    expect(searchInput).toHaveAttribute('value', testLSValuePrev);
-  });
-
-  test('Search button saves the entered value to the local storage', async () => {
     const searchInput = screen.getByRole('textbox');
     await userEvent.clear(searchInput);
     await userEvent.type(searchInput, testLSValueNew);

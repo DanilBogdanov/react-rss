@@ -1,61 +1,59 @@
+import 'whatwg-fetch';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import { act } from 'react-dom/test-utils';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import SearchPage from '@/components/pages/searchPage/searchPage';
 import ProductPage from './ProductPage';
-import { api } from '@/api/api';
-import { mockCharacterRick } from '@/tests/mockData/characters';
-
-jest.mock('@/api/api');
+import { setupStore } from '@/store/store';
+import { Provider } from 'react-redux';
 
 describe('CharacterCard routing test', () => {
-  const mockedApi = jest.mocked(api);
-  beforeEach(() => {
-    mockedApi.getCharacter.mockReturnValue(Promise.resolve(mockCharacterRick));
-    mockedApi.getCharacters.mockReturnValue(
-      Promise.resolve({ info: { count: 1 }, results: [mockCharacterRick] })
-    );
-  });
-
   test('Loading indicator is displayed', () => {
+    const store = setupStore();
     render(
-      <MemoryRouter>
-        <ProductPage />
-      </MemoryRouter>
+      <Provider store={store}>
+        <MemoryRouter>
+          <ProductPage />
+        </MemoryRouter>
+      </Provider>
     );
     const loader = screen.getByTestId('loader');
-
     expect(loader).toBeInTheDocument();
   });
 
   test('Detailed card component correctly displays the detailed card', async () => {
+    const store = setupStore();
     await act(async () => {
       render(
-        <MemoryRouter initialEntries={['/search/character/1']}>
-          <Routes>
-            <Route path='search/character/:id' element={<ProductPage />} />
-          </Routes>
-        </MemoryRouter>
+        <Provider store={store}>
+          <MemoryRouter initialEntries={['/search/product/1']}>
+            <Routes>
+              <Route path='search/product/:id' element={<ProductPage />} />
+            </Routes>
+          </MemoryRouter>
+        </Provider>
       );
     });
-
+    expect(await screen.findByText(/Price:/i)).toBeInTheDocument();
     expect(screen.getByRole('heading')).toBeInTheDocument();
     expect(screen.getByRole('img')).toBeInTheDocument();
-    expect(screen.getByText(/Gender:/i)).toBeInTheDocument();
-    expect(screen.getByText(/Species:/i)).toBeInTheDocument();
-    expect(screen.getByText(/Status:/i)).toBeInTheDocument();
+    expect(screen.getByText(/Description:/i)).toBeInTheDocument();
+    expect(screen.getByText(/Brand:/i)).toBeInTheDocument();
   });
 
   test('Clicking the close button hides the component', async () => {
+    const store = setupStore();
     await act(async () => {
       render(
-        <MemoryRouter initialEntries={['/search/character/1']}>
-          <Routes>
-            <Route path='search' element={<SearchPage />} />
-            <Route path='search/character/:id' element={<ProductPage />} />
-          </Routes>
-        </MemoryRouter>
+        <Provider store={store}>
+          <MemoryRouter initialEntries={['/search/product/1']}>
+            <Routes>
+              <Route path='search' element={<SearchPage />} />
+              <Route path='search/product/:id' element={<ProductPage />} />
+            </Routes>
+          </MemoryRouter>
+        </Provider>
       );
     });
     await userEvent.click(screen.getByRole('button'));

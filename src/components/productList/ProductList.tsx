@@ -53,7 +53,7 @@ export default function ProductList(): JSX.Element {
           />
         </>
       )}
-      {!isListLoading && !products?.products && <h3>No Results</h3>}
+      {!isListLoading && !products?.products && <h4>No Results</h4>}
     </div>
   );
 }

@@ -22,7 +22,7 @@ export default function PageLink({
   }
 
   return (
-    <li>
+    <li data-testid='page-link'>
       <Link
         className={`pagination__link${
           isActive ? ' pagination__link_active' : ''

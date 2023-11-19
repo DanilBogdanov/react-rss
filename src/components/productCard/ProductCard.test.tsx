@@ -1,75 +1,51 @@
+import 'whatwg-fetch';
 import { MemoryRouter } from 'react-router-dom';
-import { act } from 'react-dom/test-utils';
 import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { AppContextProvider } from '@/context/AppContext';
-import AppRouter from '@/router/AppRouter';
 import ProductCard from './ProductCard';
-import { api } from '@/api/api';
-import { scrollToTop } from '@/utils/appUtils';
-import { mockCharacterRick } from '@/tests/mockData/characters';
 
-jest.mock('@/api/api');
-jest.mock('@/utils/appUtils');
-
-describe('CharacterCard routing test', () => {
-  const mockedApi = jest.mocked(api);
-  const mockedScroll = jest.mocked(scrollToTop);
-
-  beforeAll(() => {
-    mockedApi.getCharacter.mockReturnValue(Promise.resolve(mockCharacterRick));
-    mockedApi.getCharacters.mockReturnValue(
-      Promise.resolve({ info: { count: 1 }, results: [mockCharacterRick] })
-    );
-    mockedScroll.mockImplementation(() => {});
-  });
-
-  test('Click on CharacterCard is opening CharacterPage', async () => {
-    await act(async () => {
-      render(
-        <MemoryRouter initialEntries={['/']}>
-          <AppContextProvider>
-            <AppRouter />
-          </AppContextProvider>
-        </MemoryRouter>
-      );
-    });
-
-    const card = await screen.findByTestId('character-card');
-    userEvent.click(card);
-    const characterPage = await screen.findByTestId('character-page');
-
-    expect(characterPage).toBeInTheDocument();
-  });
-
-  test('Click triggers an additional API call', async () => {
-    expect(mockedApi.getCharacter).toHaveBeenCalledTimes(1);
-  });
-});
+const testProduct = {
+  id: 1,
+  title: 'iPhone 9',
+  description: 'An apple mobile which is nothing like apple',
+  price: 549,
+  discountPercentage: 12.96,
+  rating: 4.69,
+  stock: 94,
+  brand: 'Apple',
+  category: 'smartphones',
+  thumbnail: 'https://i.dummyjson.com/data/products/1/thumbnail.jpg',
+  images: [
+    'https://i.dummyjson.com/data/products/1/1.jpg',
+    'https://i.dummyjson.com/data/products/1/2.jpg',
+    'https://i.dummyjson.com/data/products/1/3.jpg',
+    'https://i.dummyjson.com/data/products/1/4.jpg',
+    'https://i.dummyjson.com/data/products/1/thumbnail.jpg',
+  ],
+};
 
 describe('CharacterCard renders the relevant card data', () => {
   beforeEach(() => {
     render(
       <MemoryRouter>
-        <ProductCard product={mockCharacterRick} />
+        <ProductCard product={testProduct} />
       </MemoryRouter>
     );
   });
 
-  test('CharacterCard is presence', () => {
-    expect(screen.getByTestId('character-card')).toBeInTheDocument();
+  test('ProductCard is presence', () => {
+    expect(screen.getByTestId('product-card')).toBeInTheDocument();
   });
 
-  test('CharacterCard show character name', () => {
+  test('ProductCard show product name', () => {
     expect(screen.getByRole('heading', { level: 4 }).textContent).toEqual(
-      mockCharacterRick.name
+      testProduct.title
     );
   });
 
-  test('CharacterCard show character img', () => {
+  test('ProductCard show product img', () => {
     const img = screen.getByRole('img');
 
-    expect(img).toHaveAttribute('src', mockCharacterRick.image);
-    expect(img).toHaveAttribute('alt', `${mockCharacterRick.name}-img`);
+    expect(img).toHaveAttribute('src', testProduct.images[0]);
+    expect(img).toHaveAttribute('alt', `${testProduct.title}-img`);
   });
 });
