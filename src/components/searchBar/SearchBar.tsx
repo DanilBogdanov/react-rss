@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAppContext } from '@/context/AppContext';
+import { useAppDispatch, useAppSelector } from '@/hooks/redux';
+import { querySlice } from '@/store/reducers/querySlice';
 
 export default function SearchBar(): JSX.Element {
   const navigate = useNavigate();
-  const { query, setQuery } = useAppContext();
-  const [inputValue, setInputValue] = useState<string>(query);
+  const dispatch = useAppDispatch();
+  const { search } = useAppSelector((state) => state.query);
+  const [inputValue, setInputValue] = useState<string>(search);
+  const { setSearch } = querySlice.actions;
 
   function onChangeInput(event: React.ChangeEvent<HTMLInputElement>) {
     const value = event.target.value;
@@ -14,7 +17,7 @@ export default function SearchBar(): JSX.Element {
 
   function onSearchClick() {
     const q = inputValue.trim();
-    setQuery(q);
+    dispatch(setSearch(q));
     navigate(`search/?query=${q}`);
   }
 
