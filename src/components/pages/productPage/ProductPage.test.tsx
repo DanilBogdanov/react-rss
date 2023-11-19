@@ -3,7 +3,7 @@ import { act } from 'react-dom/test-utils';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import SearchPage from '@/components/pages/searchPage/searchPage';
-import CharacterPage from './CharacterPage';
+import ProductPage from './ProductPage';
 import { api } from '@/api/api';
 import { mockCharacterRick } from '@/tests/mockData/characters';
 
@@ -21,7 +21,7 @@ describe('CharacterCard routing test', () => {
   test('Loading indicator is displayed', () => {
     render(
       <MemoryRouter>
-        <CharacterPage />
+        <ProductPage />
       </MemoryRouter>
     );
     const loader = screen.getByTestId('loader');
@@ -34,7 +34,7 @@ describe('CharacterCard routing test', () => {
       render(
         <MemoryRouter initialEntries={['/search/character/1']}>
           <Routes>
-            <Route path='search/character/:id' element={<CharacterPage />} />
+            <Route path='search/character/:id' element={<ProductPage />} />
           </Routes>
         </MemoryRouter>
       );
@@ -53,7 +53,7 @@ describe('CharacterCard routing test', () => {
         <MemoryRouter initialEntries={['/search/character/1']}>
           <Routes>
             <Route path='search' element={<SearchPage />} />
-            <Route path='search/character/:id' element={<CharacterPage />} />
+            <Route path='search/character/:id' element={<ProductPage />} />
           </Routes>
         </MemoryRouter>
       );
