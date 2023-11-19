@@ -1,9 +1,9 @@
-.character-list {
+.product-list {
   display: flex;
   flex-direction: column;
 }
 
-.character-list__cards {
+.product-list__cards {
   display: flex;
   justify-content: space-around;
   column-gap: 30px;
