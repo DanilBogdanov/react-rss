@@ -1,8 +1,7 @@
 import { Outlet, useNavigate } from 'react-router-dom';
 import Layout from '@/components/layout/Layout';
 import SearchBar from '@/components/searchBar/SearchBar';
-import CharacterList from '@/components/characterList/CharacterList';
-import { AppContextProvider } from '@/context/AppContext';
+import ProductList from '@/components/productList/ProductList';
 import './searchPage.css';
 
 export default function SearchPage(): JSX.Element {
@@ -16,17 +15,15 @@ export default function SearchPage(): JSX.Element {
 
   return (
     <Layout>
-      <AppContextProvider>
-        <div className='search-page' onClick={onClick}>
-          <header>
-            <h1>Rick and Morty</h1>
-            <SearchBar />
-          </header>
-          <main>
-            <CharacterList />
-          </main>
-        </div>
-      </AppContextProvider>
+      <div className='search-page' onClick={onClick}>
+        <header>
+          <h1>Dummy store</h1>
+          <SearchBar />
+        </header>
+        <main>
+          <ProductList />
+        </main>
+      </div>
       <Outlet />
     </Layout>
   );
