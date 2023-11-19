@@ -1,4 +1,4 @@
-.character-card {
+.product-card {
   display: flex;
   flex-direction: column;
   width: 150px;
@@ -9,7 +9,7 @@
   cursor: pointer;
 }
 
-.character-card__title {
+.product-card__title {
   height: 50px;
   margin: 0;
 }

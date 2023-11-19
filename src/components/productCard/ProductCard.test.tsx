@@ -4,7 +4,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { AppContextProvider } from '@/context/AppContext';
 import AppRouter from '@/router/AppRouter';
-import CharacterCard from './CharacterCard';
+import ProductCard from './ProductCard';
 import { api } from '@/api/api';
 import { scrollToTop } from '@/utils/appUtils';
 import { mockCharacterRick } from '@/tests/mockData/characters';
@@ -51,7 +51,7 @@ describe('CharacterCard renders the relevant card data', () => {
   beforeEach(() => {
     render(
       <MemoryRouter>
-        <CharacterCard character={mockCharacterRick} />
+        <ProductCard product={mockCharacterRick} />
       </MemoryRouter>
     );
   });
