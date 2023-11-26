@@ -1,0 +1,9 @@
+.search-page {
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.search-page__title {
+  font-size: 4rem;
+}
