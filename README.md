@@ -1,1 +1,1 @@
-# react-rss
+RS React

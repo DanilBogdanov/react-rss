@@ -1,0 +1,19 @@
+.page-link {
+  display: block;
+  width: 5rem;
+  height: 100%;
+  color: #8c8c8c;
+  font-size: 2rem;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  transition-duration: 0.3s;
+}
+
+.page-link_active {
+  cursor: auto;
+  color: rgba(255, 255, 255, 0.658);
+  background-color: rgba(136, 136, 136, 0.377);
+}
