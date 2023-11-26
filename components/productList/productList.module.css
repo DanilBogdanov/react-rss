@@ -1,0 +1,13 @@
+.product-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.product-list__cards {
+  display: flex;
+  justify-content: space-around;
+  column-gap: 30px;
+  margin: 1rem;
+  row-gap: 50px;
+  flex-wrap: wrap;
+}
