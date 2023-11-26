@@ -1,0 +1,23 @@
+.product-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 20rem;
+  height: 25rem;
+  padding: 0.5rem;
+  border-radius: var(--border-radius);
+  background-color: var(--background-color-secondary);
+  box-shadow: 0 0 4px 4px rgba(19, 19, 19, 0.288);
+  cursor: pointer;
+  font-size: 1.6rem;
+}
+
+.product-card__title {
+  height: 50px;
+  margin: 0;
+}
+
+.product-card__img {
+  max-height: 150px;
+  object-fit: contain;
+}
