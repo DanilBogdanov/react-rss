@@ -1,0 +1,11 @@
+.server-err-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 50rem;
+}
+
+.server-err-page__title {
+  font-size: 5rem;
+}
