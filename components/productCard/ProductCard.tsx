@@ -1,6 +1,7 @@
 import { Product } from '@/types/api';
 import styles from './productCard.module.css';
 import { useRouter } from 'next/router';
+import { getLink } from '@/utils/appUtils';
 
 type ProductCartProps = {
   product: Product;
@@ -8,7 +9,7 @@ type ProductCartProps = {
 
 export default function ProductCard({ product }: ProductCartProps) {
   const router = useRouter();
-  const url = `${router.asPath}&detailed=${product.id}`;
+  const url = `${getLink(router)}&detailed=${product.id}`;
 
   return (
     <a href={url}>
