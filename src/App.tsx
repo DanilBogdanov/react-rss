@@ -1,11 +1,7 @@
-import './App.css'
+import '@/App.css';
 
-function App() {
-  return (
-    <>
-      React Forms
-    </>
-  )
+function App(): JSX.Element {
+  return <>React Forms</>;
 }
 
-export default App
+export default App;
