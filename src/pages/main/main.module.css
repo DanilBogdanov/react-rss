@@ -1,0 +1,4 @@
+.tiles {
+  display: flex;
+  justify-content: space-between;
+}
