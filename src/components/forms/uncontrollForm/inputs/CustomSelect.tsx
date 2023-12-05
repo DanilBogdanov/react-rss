@@ -1,7 +1,5 @@
 import { FormInput } from '@/types/forms/formInput';
 import InputWrapper from '../inputWrapper/InputWrapper';
-import { schema } from '@/types/forms/validationSchema';
-import { getError } from '@/utils/form';
 import { useState, useEffect } from 'react';
 
 type Props = {
@@ -20,7 +18,6 @@ export default function CustomSelect({
   refs,
 }: Props): JSX.Element {
   const [err, setErr] = useState<string>('');
-  const [isValid, setIsValid] = useState<boolean>(false);
 
   useEffect(() => {
     if (error) {
@@ -30,29 +27,9 @@ export default function CustomSelect({
     }
   }, [error]);
 
-  const onChange = async () => {
-    try {
-      const value = { [name]: refs.current.value };
-
-      await schema.validateAt(name, value, { abortEarly: false });
-      setErr('');
-      setIsValid(true);
-    } catch (e) {
-      setErr(getError(e));
-      setIsValid(false);
-    }
-  };
-
   return (
-    <InputWrapper name={name} label={label} error={err} isValid={isValid}>
-      <input
-        placeholder={label}
-        id={name}
-        list={`${name}-list`}
-        ref={refs}
-        onChange={onChange}
-        onReset={onChange}
-      />
+    <InputWrapper name={name} label={label} error={err}>
+      <input placeholder={label} id={name} list={`${name}-list`} ref={refs} />
       <datalist id={`${name}-list`}>
         {list.map((item) => (
           <option key={item} value={item}>
